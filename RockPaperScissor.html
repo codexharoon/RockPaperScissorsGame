@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor Game</title>
+
+    <style>
+        body{
+            background-color: rgb(25, 25, 25);
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .rock-icon,.paper-icon,.scissor-icon{
+            height: 50px;
+            border: 3px solid white;
+            border-radius: 50px;
+            padding: 20px;
+            margin-right: 10px;
+        }
+        .move-btn{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .game-result-p{
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-size: 25px;
+        }
+        .score-btn{
+            padding: 10px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissor</h1>
+
+    
+    <button class="Rock move-btn" onclick="
+        let randNum = Math.random();
+
+        if(randNum >=0 && randNum < 1/3){
+            score.Drwa++;
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.game-result').innerText = printDraw();
+            document.querySelector('.moves').innerHTML = movesEmoji('rock','rock');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+        else if(randNum >=1/3 && randNum < 2/3){
+            score.loses++;
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.game-result').innerText = printLose();
+            document.querySelector('.moves').innerHTML = movesEmoji('rock','paper');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+        else if(randNum >=2/3 && randNum < 1){
+            score.wins++;
+            localStorage.setItem('score',JSON.stringify(score));
+  
+            document.querySelector('.game-result').innerText = printWin();
+            document.querySelector('.moves').innerHTML = movesEmoji('rock','scissors');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+    ">    
+    <img class="rock-icon" src="IMGs/rock-emoji.png" alt="rock">
+    </button>
+
+    <button class="Paper move-btn" onclick="
+        randNum = Math.random();
+
+        if(randNum >=0 && randNum < 1/3){
+            score.wins++;
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.game-result').innerText = printWin();
+            document.querySelector('.moves').innerHTML = movesEmoji('paper','rock');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+        else if(randNum >=1/3 && randNum < 2/3){
+            score.Drwa++;
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.game-result').innerText = printDraw();
+            document.querySelector('.moves').innerHTML = movesEmoji('paper','paper');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+        else if(randNum >=2/3 && randNum < 1){
+            score.loses++;
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.game-result').innerText = printLose();
+            document.querySelector('.moves').innerHTML = movesEmoji('paper','scissors');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+    "><img class="paper-icon" src="IMGs/paper-emoji.png" alt="paper"></button>
+
+    <button class="Scissor move-btn" onclick="
+        randNum = Math.random();
+        if(randNum >=0 && randNum < 1/3){
+            score.loses++;
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.game-result').innerText = printLose();
+            document.querySelector('.moves').innerHTML = movesEmoji('scissors','rock');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+        else if(randNum >=1/3 && randNum < 2/3){
+            score.wins++;
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.game-result').innerText = printWin();
+            document.querySelector('.moves').innerHTML = movesEmoji('scissors','paper');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+        else if(randNum >=2/3 && randNum < 1){
+            score.Drwa++;
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.game-result').innerText = printDraw();
+            document.querySelector('.moves').innerHTML = movesEmoji('scissors','scissors');
+            document.querySelector('.score').innerText = printScore();
+
+        }
+    "><img class="scissor-icon" src="IMGs/scissors-emoji.png" alt="scissor"></button>
+
+    <p class="game-result  game-result-p"></p>
+    <p class="moves"></p>
+    <p class="score"></p>
+
+    <button class="score-btn" onclick="
+        score.wins = 0;
+        score.loses = 0;
+        score.Drwa = 0;
+
+        localStorage.setItem('score',JSON.stringify(score));
+
+        document.querySelector('.score').innerText = printScore();
+
+    ">Reset Score</button>
+
+
+
+    <script>        
+        let score = JSON.parse(localStorage.getItem('score'));
+
+        function printScore(){
+            const scoreString = `Total Score: Win: ${score.wins}  Loses: ${score.loses}  Draw: ${score.Drwa}`;
+
+            return scoreString;
+        }
+
+        function printDraw(){
+            const drawString = `Game Draw!`;
+            return drawString;
+        }
+
+        function printWin(){
+            const winString = `You Win!`;
+            return winString;
+        }
+
+        function printLose(){
+            const loseString = `You Lose!`;
+            return loseString;
+        }
+
+        function movesEmoji(ourMove,compMove){
+            const s = ` You <img src="IMGs/${ourMove}-emoji.png" alt="" height="50px">
+        <img src="IMGs/${compMove}-emoji.png" alt="" height="50px">
+        Computer`;
+
+            return s;
+        }
+
+        
+    </script>
+</body>
+</html>
