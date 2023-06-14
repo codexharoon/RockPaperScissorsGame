@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.rock-icon,.paper-icon,.scissor-icon{
+    height: 50px;
+    border: 3px solid white;
+    border-radius: 50px;
+    padding: 20px;
+    margin-right: 10px;
+}
+.move-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.game-result-p{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 25px;
+}
+.score-btn{
+    padding: 10px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
