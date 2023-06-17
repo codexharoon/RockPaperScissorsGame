@@ -17,119 +17,32 @@
 
     
     <button class="Rock move-btn" onclick="
-        let randNum = Math.random();
-
-        if(randNum >=0 && randNum < 1/3){
-            score.Drwa++;
-            localStorage.setItem('score',JSON.stringify(score));
-
-            document.querySelector('.game-result').innerText = printDraw();
-            document.querySelector('.moves').innerHTML = movesEmoji('rock','rock');
-            document.querySelector('.score').innerText = printScore();
-
-        }
-        else if(randNum >=1/3 && randNum < 2/3){
-            score.loses++;
-            localStorage.setItem('score',JSON.stringify(score));
-
-            document.querySelector('.game-result').innerText = printLose();
-            document.querySelector('.moves').innerHTML = movesEmoji('rock','paper');
-            document.querySelector('.score').innerText = printScore();
-
-        }
-        else if(randNum >=2/3 && randNum < 1){
-            score.wins++;
-            localStorage.setItem('score',JSON.stringify(score));
-  
-            document.querySelector('.game-result').innerText = printWin();
-            document.querySelector('.moves').innerHTML = movesEmoji('rock','scissors');
-            document.querySelector('.score').innerText = printScore();
-
-        }
+        playGame('rock');
     ">    
     <img class="rock-icon" src="IMGs/rock-emoji.png" alt="rock">
     </button>
 
     <button class="Paper move-btn" onclick="
-        randNum = Math.random();
-
-        if(randNum >=0 && randNum < 1/3){
-            score.wins++;
-            localStorage.setItem('score',JSON.stringify(score));
-
-            document.querySelector('.game-result').innerText = printWin();
-            document.querySelector('.moves').innerHTML = movesEmoji('paper','rock');
-            document.querySelector('.score').innerText = printScore();
-
-        }
-        else if(randNum >=1/3 && randNum < 2/3){
-            score.Drwa++;
-            localStorage.setItem('score',JSON.stringify(score));
-
-            document.querySelector('.game-result').innerText = printDraw();
-            document.querySelector('.moves').innerHTML = movesEmoji('paper','paper');
-            document.querySelector('.score').innerText = printScore();
-
-        }
-        else if(randNum >=2/3 && randNum < 1){
-            score.loses++;
-            localStorage.setItem('score',JSON.stringify(score));
-
-            document.querySelector('.game-result').innerText = printLose();
-            document.querySelector('.moves').innerHTML = movesEmoji('paper','scissors');
-            document.querySelector('.score').innerText = printScore();
-
-        }
+        playGame('paper');
     "><img class="paper-icon" src="IMGs/paper-emoji.png" alt="paper"></button>
 
     <button class="Scissor move-btn" onclick="
-        randNum = Math.random();
-        if(randNum >=0 && randNum < 1/3){
-            score.loses++;
-            localStorage.setItem('score',JSON.stringify(score));
-
-            document.querySelector('.game-result').innerText = printLose();
-            document.querySelector('.moves').innerHTML = movesEmoji('scissors','rock');
-            document.querySelector('.score').innerText = printScore();
-
-        }
-        else if(randNum >=1/3 && randNum < 2/3){
-            score.wins++;
-            localStorage.setItem('score',JSON.stringify(score));
-
-            document.querySelector('.game-result').innerText = printWin();
-            document.querySelector('.moves').innerHTML = movesEmoji('scissors','paper');
-            document.querySelector('.score').innerText = printScore();
-
-        }
-        else if(randNum >=2/3 && randNum < 1){
-            score.Drwa++;
-            localStorage.setItem('score',JSON.stringify(score));
-
-            document.querySelector('.game-result').innerText = printDraw();
-            document.querySelector('.moves').innerHTML = movesEmoji('scissors','scissors');
-            document.querySelector('.score').innerText = printScore();
-
-        }
+        playGame('scissors');
     "><img class="scissor-icon" src="IMGs/scissors-emoji.png" alt="scissor"></button>
 
     <p class="game-result  game-result-p"></p>
     <p class="moves"></p>
     <p class="score"></p>
 
-    <button class="score-btn" onclick="
-        score.wins = 0;
-        score.loses = 0;
-        score.Drwa = 0;
-
-        localStorage.setItem('score',JSON.stringify(score));
-
-        document.querySelector('.score').innerText = printScore();
-
+    <button class="reset-score-btn" onclick="
+        resetScore();
     ">Reset Score</button>
 
+    <button class="auto-play-btn" onclick="
+        autoPlay();
+    ">Auto PLay</button>
 
-
+    
     <script src="script.js"></script>
 </body>
 </html>
