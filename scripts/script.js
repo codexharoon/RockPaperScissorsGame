@@ -22,8 +22,8 @@ function printLose(){
 }
 
 function movesEmoji(ourMove,compMove){
-    const s = ` You <img src="static/IMGs/${ourMove}-emoji.png" alt="" height="50px">
-<img src="static/IMGs/${compMove}-emoji.png" alt="" height="50px">
+    const s = ` You <img src="IMGs/${ourMove}-emoji.png" alt="" height="50px">
+<img src="IMGs/${compMove}-emoji.png" alt="" height="50px">
 Computer`;
 
     return s;
